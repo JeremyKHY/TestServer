@@ -53,6 +53,10 @@ io.on('connection', function(socket){
     console.log(data.user + ' : ' + data.msg + ' : ' + data.date);
     io.sockets.emit('chat', data);
   });
+  socket.on('group', function (data){
+    console.log(data.user + ' : ' + data.msg + ' : ' + data.date);
+    io.to(data.roomname).emit('group', data);
+  });
 
   socket.on('disconnect', function(){
   });
