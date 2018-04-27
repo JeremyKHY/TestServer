@@ -42,7 +42,7 @@ var server = http.createServer(app).listen(3030, function(){
 var io = socketio.listen(server);
 */
 io.on('connection', function(socket){
-  console.log("connection!!!!");
+  console.log("connection@@@");
   socket.on('join', function(data){
     console.log(data.user + ' : ' + data.roomname);
     socket.leave(socket.room);
