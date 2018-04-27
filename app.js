@@ -4,26 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var index = require('./routes/index');
 var users = require('./routes/users');
-
 var app = express();
-
 var http = require("http");
 var io = require("socket.io")({transports: ['websocket'],});
 io.attach(3030);
-
 var redis = require('redis');
 var client = redis.createClient(6379,'testfg-001.sychtz.0001.apn2.cache.amazonaws.com');
-
 var date = require('date-utils');
-
 var schedule = require('node-schedule');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -31,16 +24,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', index);
 app.use('/users', users);
-/*
-var server = http.createServer(app).listen(3030, function(){
-  console.log('3030');
-});
 
-var io = socketio.listen(server);
-*/
+//채팅서버
 io.on('connection', function(socket){
   console.log("connection@@@");
   socket.on('join', function(data){
@@ -62,6 +49,7 @@ io.on('connection', function(socket){
   });
 });
 
+//시즌시간 
 var rule = new schedule.RecurrenceRule();
 rule.second = 10;
 var test = 0;
