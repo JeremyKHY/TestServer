@@ -45,12 +45,14 @@ io.on('connection', function(socket){
     io.to(data.roomname).emit('group', data);
   });
   socket.on('userjoin', function(data){
+    console.log("userjoin");
     soket.leave(socket.room);
     socket.join(data.roomname);
     socket.room = data.roomname;
     //socket.broadcast.to(data.roomname).emit('overlap', data);
   })
   socket.on('overlap', function (data){
+    console.log("overlap");
     io.to(data.roomname).emit('overlap', data);
   })
 
