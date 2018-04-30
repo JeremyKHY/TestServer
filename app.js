@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 
-//채팅서버@@
+//채팅서버
 io.on('connection', function(socket){
   console.log("connection@@@");
   socket.on('join', function(data){
