@@ -48,7 +48,7 @@ io.on('connection', function(socket){
     soket.leave(socket.room);
     socket.join(data.roomname);
     socket.room = data.roomname;
-    io.broadcast.to(data.roomname).emit('overlap', data);
+    socket.broadcast.to(data.roomname).emit('overlap', data);
   })
 
   socket.on('disconnect', function(){
