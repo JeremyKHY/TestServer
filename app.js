@@ -42,8 +42,14 @@ io.on('connection', function(socket){
   });
   socket.on('group', function (data){
     console.log(data.user + ' : ' + data.msg + ' : ' + data.date);
-    io.to(data.roomname).emit('group', data);
+    io.broadcast.to(data.roomname).emit('group', data);
   });
+  socket.on('userjoin', function(data){
+    soket.leave(socket.room);
+    socket.join(data.roomname);
+    socket.room = data.roomname;
+    io.to(data.roomname).emit('overlap', data);
+  })
 
   socket.on('disconnect', function(){
   });
