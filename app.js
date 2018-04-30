@@ -49,12 +49,12 @@ io.on('connection', function(socket){
     socket.leave(socket.room);
     socket.join(data.roomname);
     socket.room = data.roomname;
-    //socket.broadcast.to(data.roomname).emit('overlap', data);
+    io.broadcast.to(data.roomname).emit('overlap', data);
   })
-  socket.on('overlap', function (data){
-    console.log("overlap");
-    io.to(data.roomname).emit('overlap', data);
-  })
+  // socket.on('overlap', function (data){
+  //   console.log("overlap");
+  //   io.to(data.roomname).emit('overlap', data);
+  // })
 
   socket.on('disconnect', function(){
   });
