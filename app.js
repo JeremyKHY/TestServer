@@ -123,6 +123,9 @@ app.post('/MoveTest', function(req,res)
         if(err)
         {
             console.log(err);
+        }
+        else
+        {
             client.zadd("FightingPower", "0","wqpw2322", function(err,data)
             {
 
