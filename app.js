@@ -116,10 +116,10 @@ app.post('/setUserFightingPower', function(req,res)
 //시즌 초기화
 app.post('MoveTest', function(req,res)
 {
-  client.move("FightingPower", "3", function(err, succeed)
+  client.move("FightingPower", "1", function(err)
   {
     console.log("Tes01");
-    console.log(succeed);
+    console.log(err);
       if(err)
       {
           console.log("Tes02");
