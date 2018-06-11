@@ -118,7 +118,15 @@ app.post('MoveTest', function(req,res)
 {
   client.move("FightingPower", "3", function(err)
   {
-
+    console.log("Tes01");
+      if(err)
+      {
+          console.log("Tes02");
+      }
+      else
+      {
+          console.log("Tes03");
+      }
   });
 });
 //전투력 데이터 받아오기
