@@ -116,21 +116,17 @@ app.post('/setUserFightingPower', function(req,res)
 //시즌 초기화
 app.post('/MoveTest', function(req,res)
 {
-  console.log("Test000000");
   client.select(0, function(err)
   {
-    console.log("Test00");
     client.move("FightingPower", 1, function(err, didSucceed)
     {
-        console.log("Tes01");
-        console.log(didSucceed);
         if(err)
         {
-            console.log("Tes02");
-        }
-        else
-        {
-            console.log("Tes03");
+            console.log(err);
+            client.zadd("FightingPower", "0","wqpw2322", function(err,data)
+            {
+
+            });
         }
     });
   });
