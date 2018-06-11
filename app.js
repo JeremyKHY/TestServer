@@ -113,7 +113,14 @@ app.post('/setUserFightingPower', function(req,res)
     });
  });
 });
+//시즌 초기화
+app.post('MoveTest', function(req,res)
+{
+  client.move("FightingPower", "3", function(err)
+  {
 
+  });
+});
 //전투력 데이터 받아오기
 app.post('/getUserFightingPowerList', function(req,res)
 {
@@ -229,7 +236,7 @@ app.post('/setUserBanList', function(req,res)
 		{
 			if(err)
 			{
-				var tmep = err;
+        var tmep = err;
 				res.json(temp);
 			}
 			else
