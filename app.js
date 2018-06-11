@@ -75,14 +75,33 @@ var j = schedule.scheduleJob(rule,function(){
 });
 
 var SeasonCount = 1;
-var count = 259200;
+//var count = 259200;
+var count = 30;
 var repeat = setInterval(function(){
   //console.log('setInterval : ' + count);
   count--;
   if(count == 0)
   {
-    count = 259200;
+    //count = 259200;
+    count = 30;
     SeasonCount++;
+    client.select(0, function(err)
+    {
+      client.move("FightingPower" + (SeasonCount - 1).toString() , 1, function(err, didSucceed)
+      {
+          if(err)
+          {
+              console.log(err);
+          }
+          else
+          {
+              client.zadd("FightingPower" + SeasonCount.toString(), "0","wqpw2322", function(err,data)
+              {
+
+              });
+          }
+      });
+    });
    // clearInterval(repeat);
   }
 },1000);
