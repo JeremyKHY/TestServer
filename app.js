@@ -171,6 +171,23 @@ app.post('/getUserFightingPowerList', function(req,res)
  });
 });
 
+//콜로세움 총인원 받아오기
+app.post('/getMemberCount', function(req,res)
+{
+  client.zcard("Ranking", function(err,data)
+  {
+    if(err)
+    {
+
+    }
+    else
+    {
+      var temp = data;
+      res.json(temp);
+    }
+  });
+});
+
 //콜로세움 랭킹 데이터 저장
 app.post('/setRank', function(req,res)
 {
