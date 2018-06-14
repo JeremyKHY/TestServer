@@ -76,14 +76,14 @@ var j = schedule.scheduleJob(rule,function(){
 
 var SeasonCount = 1;
 //var count = 259200;
-var count = 30;
+var count = 300000;
 var repeat = setInterval(function(){
   //console.log('setInterval : ' + count);
   count--;
   if(count == 0)
   {
     //count = 259200;
-    count = 30;
+    count = 300000;
     SeasonCount++;
     client.select(0, function(err)
     {
